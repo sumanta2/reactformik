@@ -41,26 +41,26 @@ const YoutubeForm = () => {
   })
   //console.table('Form Values', formik.values)
   //console.log('Form error',formik.errors)
-  console.log('Visited field',formik.touched)
+  //console.log('Visited field',formik.touched)
   return (
     <div>
       <form onSubmit={formik.handleSubmit} >
       <div className="form-control">
         <label htmlFor="name">Name</label>
         <input type="text" name="name" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.name} id="name" />
-        {formik.errors.name ? <div className="error">{formik.errors.name}</div>: null }
+        {formik.touched.name && formik.errors.name ? <div className="error">{formik.errors.name}</div>: null }
         </div>
 
         <div className="form-control">
         <label htmlFor="email">Email</label>
         <input type="email" name="email" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.email} id="email" />
-        {formik.errors.email ? <div className="error">{formik.errors.email}</div>: null }
+        {formik.touched.email && formik.errors.email ? <div className="error">{formik.errors.email}</div>: null }
         </div>
 
         <div className="form-control">
         <label htmlFor="channel">Channel</label>
         <input type="text" name="channel" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.channel} id="channel" />
-        {formik.errors.channel ? <div className="error">{formik.errors.channel}</div>: null }
+        { formik.touched.channel && formik.errors.channel ? <div className="error">{formik.errors.channel}</div>: null }
         </div>
 
         {/* onBlur event help to track any component are already visited or not */}

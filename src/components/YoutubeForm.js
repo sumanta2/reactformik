@@ -6,12 +6,15 @@ const YoutubeForm = () => {
       name: '',
       email: '',
       channel: '',
-    }      //the key name must be same of the name of input tag's name property's value
+    },      //the key name must be same of the name of input tag's name property's value
+    onSubmit:(values)=>{
+      console.table('Form Values',values)
+    }
   })
-  console.table('Form Values', formik.values)
+  //console.table('Form Values', formik.values)
   return (
     <div>
-      <form >
+      <form onSubmit={formik.handleSubmit} >
         <label htmlFor="name">Name</label>
         <input type="text" name="name" onChange={formik.handleChange} value={formik.values.name} id="name" />
 

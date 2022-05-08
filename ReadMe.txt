@@ -1,5 +1,7 @@
 for install formik package  ::  npm install formik
 
-vdo:: 10
+for install yup package   :: npm install yup   it used to user input validation
+
+vdo:: 11
 
 playlist link::  https://youtube.com/playlist?list=PLC3y8-rFHvwiPmFbtzEWjESkqBVDbdgGu

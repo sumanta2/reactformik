@@ -1,4 +1,6 @@
 import { useFormik } from 'formik';
+import * as Yup from 'yup'
+
 const YoutubeForm = () => {
 
 
@@ -6,26 +8,35 @@ const YoutubeForm = () => {
     console.table('Form Values', values)
   }
 
-  const validate =(values) => {
+  // const validate =(values) => {
 
-    let errors = {}
-    if (!values.name) {
-      errors.name = "Required"
-    }
-    if (!values.email) {
-      errors.email = "Required"
-    }
-    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email))
-    {
-      errors.email = 'Invalid email format'
-    }
-    if (!values.channel) {
-      errors.channel = "Required"
-    }
 
-    return errors
+    
 
-  }
+  //   let errors = {}
+  //   if (!values.name) {
+  //     errors.name = "Required"
+  //   }
+  //   if (!values.email) {
+  //     errors.email = "Required"
+  //   }
+  //   else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email))
+  //   {
+  //     errors.email = 'Invalid email format'
+  //   }
+  //   if (!values.channel) {
+  //     errors.channel = "Required"
+  //   }
+
+  //   return errors
+
+  // }
+
+  const validationSchema=Yup.object({
+    name:Yup.string().required('Required'),
+    email:Yup.string().email('Invalid email format').required('Required'),
+    channel:Yup.string().required("Required")
+  })
   
   const initialValues=
   {
@@ -37,7 +48,8 @@ const YoutubeForm = () => {
   const formik = useFormik({
     initialValues,    
     onSubmit,
-    validate
+    validationSchema
+    //validate
   })
   //console.table('Form Values', formik.values)
   //console.log('Form error',formik.errors)

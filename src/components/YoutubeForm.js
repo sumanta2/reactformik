@@ -22,6 +22,10 @@ const YoutubeForm = () => {
     channel: '',
     comments: '',
     address: '',
+    social:{
+      facebook:'',
+      twitter:'',
+    },
   }
 
 
@@ -95,6 +99,18 @@ const YoutubeForm = () => {
           </Field>
 
           <ErrorMessage name='address' component={TextError} />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="facebook">Comments</label>
+           <Field  placeholder="Facebook" type="text" name="social.facebook" id="facebook" /> {/* in the name property social.facebook means here we store the facebook value in a nested object*/}
+          <ErrorMessage name='comments' component={TextError}/>
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="twitter">Comments</label>
+          <Field placeholder="Twitter" type="text" name="social.twitter" id="twitter"/>  {/* in the name property social.twitter means here we store the twitter value in a nested object*/}
+          <ErrorMessage name='comments' component={TextError}/>
         </div>
 
         {/* onBlur event help to track any component are already visited or not */}

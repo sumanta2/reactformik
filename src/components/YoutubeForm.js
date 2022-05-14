@@ -26,6 +26,7 @@ const YoutubeForm = () => {
       facebook:'',
       twitter:'',
     },
+    phoneNumber:['',''],
   }
 
 
@@ -110,6 +111,18 @@ const YoutubeForm = () => {
         <div className="form-control">
           <label htmlFor="twitter">Comments</label>
           <Field placeholder="Twitter" type="text" name="social.twitter" id="twitter"/>  {/* in the name property social.twitter means here we store the twitter value in a nested object*/}
+          <ErrorMessage name='comments' component={TextError}/>
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="primaryPh">Primary Phone Number</label>
+          <Field placeholder="primaryPh" type="text" name="phoneNumber[0]" id="primaryPh"/>  {/* used array to store same type different field input value*/}
+          <ErrorMessage name='comments' component={TextError}/>
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="secondaryPh">Secondary Phone Number</label>
+          <Field placeholder="secondaryPh" type="text" name="phoneNumber[1]" id="secondaryPh"/>  {/* used array to store same type different field input value*/}
           <ErrorMessage name='comments' component={TextError}/>
         </div>
 

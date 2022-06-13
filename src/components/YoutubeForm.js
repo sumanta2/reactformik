@@ -34,7 +34,9 @@ const YoutubeForm = () => {
   //console.table('Form Values', formik.values)
   //console.log('Form error',formik.errors)
   //console.log('Visited field',formik.touched)
+  //validateOnChage and validateOnBlur' props of <Formik> if false value is provided it cannot call error object when onChange and onBlur event Occur
   return (
+    // <Formik initialValues={initialValues} validationSchema={validationSchema} validateOnChange={false} validateOnBlur={false} onSubmit={onSubmit}>
     <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
       <Form >
         <div className="form-control">

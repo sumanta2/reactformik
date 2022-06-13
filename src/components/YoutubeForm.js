@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage,FieldArray } from 'formik';
 import TextError from './TextError';
 import * as Yup from 'yup'
 
@@ -27,6 +27,7 @@ const YoutubeForm = () => {
       twitter:'',
     },
     phoneNumber:['',''],
+    phNumbers:[''],
   }
 
 
@@ -85,7 +86,7 @@ const YoutubeForm = () => {
             {
               (props) => {
                 const { field, form, meta } = props
-                console.log('Render props:', props)
+                //console.log('Render props:', props)
                 return (
                   <div >
                     <input type='text' id='address' {...field} />
@@ -124,6 +125,35 @@ const YoutubeForm = () => {
           <label htmlFor="secondaryPh">Secondary Phone Number</label>
           <Field placeholder="secondaryPh" type="text" name="phoneNumber[1]" id="secondaryPh"/>  {/* used array to store same type different field input value*/}
           <ErrorMessage name='comments' component={TextError}/>
+        </div>
+
+        <div className="form-control">
+          <label >List pf Phone NumberS</label>
+          <FieldArray name='phNumbers'>
+            {
+              (fieldArrayProps)=>{
+                  // console.log(fieldArrayProps)
+                  const {push,remove,form} = fieldArrayProps;
+                  const {values}=form
+                  const {phNumbers}= values
+                  return (
+                  <div>
+                    {
+                      phNumbers.map((phNumbers,index)=>(
+                        <div key={index}>
+                          <Field name={`phNumbers[${index}]`}/>
+                          {
+                            index > 0 && <button type='button' onClick={()=>(remove(index))}> - </button>
+                          }
+                          <button type='button' onClick={()=>(push(''))}> + </button>
+                        </div>
+                      ))
+                    }
+                  </div>)
+
+              }
+            }
+          </FieldArray>
         </div>
 
         {/* onBlur event help to track any component are already visited or not */}

@@ -1,7 +1,7 @@
-import { Formik, Form, Field, ErrorMessage,FieldArray } from 'formik';
+import { Formik, Form, Field, ErrorMessage,FieldArray,FastField } from 'formik';
 import TextError from './TextError';
 import * as Yup from 'yup'
-
+//FastField is a optimized version of field version when type any thing in form it directly send data to state  it only run his own state does not affect another state
 const YoutubeForm = () => {
 
 
@@ -82,11 +82,12 @@ const YoutubeForm = () => {
 
         <div className="form-control">
           <label htmlFor="address">Comments</label>
-          <Field placeholder="Your Address" type="text" name="address" id="address">
+          <FastField placeholder="Your Address" type="text" name="address" id="address">
             {
               (props) => {
-                const { field, form, meta } = props
                 //console.log('Render props:', props)
+                const { field, form, meta } = props
+                
                 return (
                   <div >
                     <input type='text' id='address' {...field} />
@@ -98,7 +99,7 @@ const YoutubeForm = () => {
                 * meta manage error message  */ }
               }
             }
-          </Field>
+          </FastField>
 
           <ErrorMessage name='address' component={TextError} />
         </div>
@@ -132,13 +133,14 @@ const YoutubeForm = () => {
           <FieldArray name='phNumbers'>
             {
               (fieldArrayProps)=>{
-                  // console.log(fieldArrayProps)
+                  console.log(fieldArrayProps)
                   const {push,remove,form} = fieldArrayProps;
                   const {values}=form
                   const {phNumbers}= values
                   return (
                   <div>
                     {
+                      
                       phNumbers.map((phNumbers,index)=>(
                         <div key={index}>
                           <Field name={`phNumbers[${index}]`}/>
